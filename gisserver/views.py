@@ -131,6 +131,8 @@ class GISView(View):
             return uc_methods[operation]
         except KeyError:
             allowed = ", ".join(operations.keys())
+            # NOTE: officially, this should return InvalidParameterValue if the operation
+            # doesn't exist in the WFS spec at all.
             raise OperationNotSupported(
                 "request",
                 f"'{operation.lower()}' is not implemented, supported are: {allowed}.",

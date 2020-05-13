@@ -45,7 +45,14 @@ class WFSException(OWSException):
 
 
 class OperationNotSupported(WFSException):
-    """WFS Method is called, but does not exist on this server."""
+    """WFS Method is called, but does not exist on this server.
+
+    WFS 2.0.2 note: The OperationNotSupported exception should only be raised
+    if the operation being invoked is defined in this standard but is not
+    implemented by the server. If the operation being invoked is not defined
+    in this standard then the server should raise an InvalidParameterValue
+    exception.
+    """
 
     status_code = 400
     reason = "Not Implemented"
